@@ -1,9 +1,10 @@
 package pl.skibahost.gui;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Window extends JFrame {
-    static final int WIDTH = 800;
+    static final int WIDTH = 600;
     static final int HEIGHT = 200;
 
     private JPanel mainPanel;
@@ -25,7 +26,8 @@ public class Window extends JFrame {
         mainPanel.add(introPanel);
         mainPanel.add(instancesPanel);
         mainPanel.add(searchPanel);
-        
+
+        this.setMinimumSize(new Dimension(WIDTH, 150));
         this.add(mainPanel);
     }
 
