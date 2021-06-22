@@ -19,6 +19,7 @@ public class SearchTask extends AbstractFileTask {
     @Override
     public void run() {
         System.out.println("Starting task: " + this.hashCode());
+        isWorking = true;
         long taskStart = System.currentTimeMillis();
         try {
             for (String line : lines) {
@@ -31,6 +32,7 @@ public class SearchTask extends AbstractFileTask {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        isWorking = false;
         this.duration = System.currentTimeMillis() - taskStart;
         System.out.println("Finished task: " + this.hashCode() + " Result: " + result + " Time: " + duration);
     }

@@ -12,6 +12,7 @@ public abstract class AbstractFileTask implements Runnable{
     protected File file;
     protected long duration;
     protected boolean result;
+    protected volatile boolean isWorking;
 
     AbstractFileTask(File file){
         this.file = file;
@@ -44,5 +45,9 @@ public abstract class AbstractFileTask implements Runnable{
     protected void shortSleep(int delay){
         long currentNano = System.nanoTime();
         while (currentNano + delay >= System.nanoTime()){}
+    }
+
+    public boolean isWorking(){
+        return isWorking;
     }
 }

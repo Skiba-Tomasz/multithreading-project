@@ -55,7 +55,7 @@ class InstancesPanel extends JPanel{
         InstancesPanel.this.countFiled.setText(""+ ++count);
     }
 
-    private int getCount() {
+    public int getCount() {
         String input = InstancesPanel.this.countFiled.getText();
         int count = 0;
         try{

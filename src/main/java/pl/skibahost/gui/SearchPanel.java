@@ -1,13 +1,8 @@
 package pl.skibahost.gui;
 
-import pl.skibahost.file.DictionarySplitter;
-import pl.skibahost.tasks.SearchTask;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.awt.event.ActionListener;
 
 /**
  * Button panel GUI
@@ -17,14 +12,17 @@ import java.util.stream.IntStream;
 class SearchPanel extends JPanel{
     private JTextField searchText;
     private JButton searchBtn;
+    private ActionListener action;
 
-    public SearchPanel() {
+    public SearchPanel(ActionListener action) {
+        this.action = action;
+
         init();
     }
 
     private void init() {
         initPanel();
-        initComponenets();
+        initComponents();
         addComponenetsToPanel();
     }
 
@@ -33,23 +31,19 @@ class SearchPanel extends JPanel{
         this.setSize(new Dimension(Window.WIDTH, 80));
     }
 
-    private void initComponenets() {
+    private void initComponents() {
         searchText = new JTextField();
         this.searchText.setSize(Window.WIDTH, 80);
         searchBtn = new JButton("Szukaj");
-        searchBtn.addActionListener(e -> {
-            Set<SearchTask> tasks = IntStream.range(0, 10)
-                    .mapToObj(i -> new SearchTask(
-                            SearchPanel.this.searchText.getText(),
-                            DictionarySplitter.files.get(i),
-                            10000)
-                    ).collect(Collectors.toSet());
-            tasks.stream().forEach(task -> new Thread(task).start());
-        });
+        searchBtn.addActionListener(action);
     }
 
     private void addComponenetsToPanel() {
         add(searchText);
         add(searchBtn);
+    }
+
+    public String getInput(){
+        return this.searchText.getText();
     }
 }
