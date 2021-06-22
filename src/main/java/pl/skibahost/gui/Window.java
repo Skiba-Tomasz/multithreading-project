@@ -7,6 +7,12 @@ public class Window extends JFrame {
     static final int WIDTH = 600;
     static final int HEIGHT = 200;
 
+    public static final JProgressBar progressBar = new JProgressBar();
+
+    static {
+        progressBar.setStringPainted(true);
+    }
+
     private JPanel mainPanel;
     private SearchPanel searchPanel;
     private InstancesPanel instancesPanel;
@@ -26,8 +32,9 @@ public class Window extends JFrame {
         mainPanel.add(introPanel);
         mainPanel.add(instancesPanel);
         mainPanel.add(searchPanel);
+        mainPanel.add(progressBar);
 
-        this.setMinimumSize(new Dimension(WIDTH, 150));
+        this.setMinimumSize(new Dimension(WIDTH, HEIGHT));
         this.add(mainPanel);
     }
 

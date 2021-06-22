@@ -1,5 +1,7 @@
 package pl.skibahost.gui;
 
+import pl.skibahost.file.DictionarySplitter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -40,6 +42,7 @@ class InstancesPanel extends JPanel{
         downBtn = new JButton("-");
         downBtn.addActionListener(e -> decrementCounter(e));
         setBtn = new JButton("Podziel dane");
+        setBtn.addActionListener(e -> new Thread(new DictionarySplitter(InstancesPanel.this.getCount())).start());
     }
 
     private void decrementCounter(ActionEvent e) {
@@ -71,15 +74,4 @@ class InstancesPanel extends JPanel{
         add(setBtn);
     }
 
-    public JButton getUpBtn() {
-        return upBtn;
-    }
-
-    public JButton getDownBtn() {
-        return downBtn;
-    }
-
-    public JButton getSetBtn() {
-        return setBtn;
-    }
 }
