@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 
 public class DictionarySplitter implements Runnable {
 
+    public static List<File> files;
+
     private int parts;
 
     public DictionarySplitter(int parts) {
@@ -21,7 +23,7 @@ public class DictionarySplitter implements Runnable {
         InputStream resourceAsStream = DictionarySplitter.class.getClassLoader().getResourceAsStream("slownik.dic");
         if (resourceAsStream == null)
             throw new IllegalArgumentException("Dictionary file not found!");
-        List<File> files = new ArrayList<>();
+        files = new ArrayList<>();
         try (var lines = new BufferedReader(new InputStreamReader(resourceAsStream, StandardCharsets.UTF_8)).lines()) {
             List<String> linesList = lines.collect(Collectors.toList());
             int wordsInPart = linesList.size() / parts;
@@ -33,7 +35,7 @@ public class DictionarySplitter implements Runnable {
                         int progres = (i*100)/linesList.size();
                         Window.progressBar.setValue(progres);
                         Window.progressBar.setString(i + "/" + linesList.size() + " (" + progres + "%)");
-                        writer.write(linesList.get(i));
+                        writer.write(linesList.get(i) + '\n');
                     }
                     files.add(file);
                 }
