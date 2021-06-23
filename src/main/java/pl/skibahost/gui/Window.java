@@ -1,5 +1,7 @@
 package pl.skibahost.gui;
 
+import pl.skibahost.OmpMain;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -31,6 +33,9 @@ public class Window extends JFrame {
         this.setSize(WIDTH, HEIGHT);
         this.setTitle("Słownik równoległy - Tomasz Skiba");
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        JButton test = new JButton("Test");
+        test.addActionListener(e -> OmpMain.main(null));
+        mainPanel.add(test);
         mainPanel.add(introPanel);
         addTabs();
         mainPanel.add(tabbedPane);

@@ -1,0 +1,1 @@
+java -jar .\lib\omp4j-1.2.jar -d .\target\classes .\src\main\java\pl\skibahost\OmpMain.java
