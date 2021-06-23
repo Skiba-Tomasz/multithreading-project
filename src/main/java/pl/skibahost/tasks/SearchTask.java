@@ -1,5 +1,7 @@
 package pl.skibahost.tasks;
 
+import pl.skibahost.gui.Window;
+
 import java.io.File;
 
 public class SearchTask extends AbstractFileTask {
@@ -32,8 +34,10 @@ public class SearchTask extends AbstractFileTask {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        isWorking = false;
         this.duration = System.currentTimeMillis() - taskStart;
+        isWorking = false;
         System.out.println("Finished task: " + this.hashCode() + " Result: " + result + " Time: " + duration);
+        if(result)
+            Window.progressBar.setString("Done (" + duration + ")");
     }
 }

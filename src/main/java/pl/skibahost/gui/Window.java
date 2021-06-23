@@ -21,6 +21,7 @@ public class Window extends JFrame {
     private JTabbedPane tabbedPane;
     private SequentialPanel sequentialPanel;
     private MultiThreadPanel multiThreadPanel;
+    private Omp4jPanel omp4jPanel;
 
     public Window(){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -29,13 +30,11 @@ public class Window extends JFrame {
         this.tabbedPane = new JTabbedPane();
         this.sequentialPanel = new SequentialPanel();
         this.multiThreadPanel = new MultiThreadPanel();
+        this.omp4jPanel = new Omp4jPanel();
 
         this.setSize(WIDTH, HEIGHT);
         this.setTitle("Słownik równoległy - Tomasz Skiba");
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-        JButton test = new JButton("Test");
-        test.addActionListener(e -> OmpMain.main(null));
-        mainPanel.add(test);
         mainPanel.add(introPanel);
         addTabs();
         mainPanel.add(tabbedPane);
@@ -48,6 +47,7 @@ public class Window extends JFrame {
     private void addTabs(){
         tabbedPane.add("Sekwencyjny", sequentialPanel);
         tabbedPane.add("Wątki", multiThreadPanel);
+        tabbedPane.add("OpenMP4J", omp4jPanel);
     }
 
 }
