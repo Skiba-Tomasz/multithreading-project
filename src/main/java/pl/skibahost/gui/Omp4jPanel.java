@@ -1,6 +1,7 @@
 package pl.skibahost.gui;
 
 import pl.skibahost.job.Omp4jJob;
+import pl.skibahost.tasks.InvocationType;
 
 import javax.swing.*;
 
@@ -26,7 +27,7 @@ public class Omp4jPanel extends JPanel {
     }
 
     private void startParallelSearch() {
-        Omp4jJob omp4jJob = new Omp4jJob(instancesPanel.getCount(), searchPanel.getInput());
+        Omp4jJob omp4jJob = new Omp4jJob(instancesPanel.getCount(), searchPanel.getInput(), InvocationType.SWING_GUI);
         omp4jJob.execute();
     }
 

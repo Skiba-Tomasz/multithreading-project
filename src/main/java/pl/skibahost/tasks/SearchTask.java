@@ -4,19 +4,19 @@ import pl.skibahost.AppState;
 import pl.skibahost.gui.Window;
 
 import java.io.File;
+import java.util.List;
 
 public class SearchTask extends AbstractFileTask {
 
+    protected SearchTaskType type;
+    protected InvocationType invocationType;
     protected String keyword;
 
-    public SearchTask(String keyword, File file) {
-        super(file);
+    public SearchTask(String keyword, List<String>lines, SearchTaskType searchTaskType, InvocationType invocationType, int delay) {
+        super(lines, delay);
         this.keyword = keyword;
-    }
-
-    public SearchTask(String keyword, File file, int delay) {
-        super(file, delay);
-        this.keyword = keyword;
+        this.type = searchTaskType;
+        this.invocationType = invocationType;
     }
 
     @Override
@@ -42,6 +42,6 @@ public class SearchTask extends AbstractFileTask {
         if(result) {
             Window.progressBar.setString("Done (" + duration + ")");
         }
-        AppState.getInstance().results.add(new AppState.SearchResult(keyword, result, taskStart, taskEnd, duration, Thread.currentThread().hashCode()));
+        AppState.getInstance().results.add(new SearchResult(keyword, result, type, invocationType, duration, taskStart, taskEnd, Thread.currentThread().hashCode()));
     }
 }

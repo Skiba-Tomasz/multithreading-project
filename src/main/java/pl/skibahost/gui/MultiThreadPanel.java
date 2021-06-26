@@ -1,6 +1,7 @@
 package pl.skibahost.gui;
 
 import pl.skibahost.job.MultiThreadSearch;
+import pl.skibahost.tasks.InvocationType;
 
 import javax.swing.*;
 
@@ -26,7 +27,7 @@ public class MultiThreadPanel extends JPanel {
     }
 
     private void startParallelSearch() {
-        MultiThreadSearch multiThreadSearch = new MultiThreadSearch(instancesPanel.getCount(), searchPanel.getInput());
+        MultiThreadSearch multiThreadSearch = new MultiThreadSearch(instancesPanel.getCount(), searchPanel.getInput(), InvocationType.SWING_GUI);
         multiThreadSearch.execute();
     }
 

@@ -9,31 +9,13 @@ import java.util.stream.Collectors;
 public abstract class AbstractFileTask implements Runnable{
     protected List<String> lines;
     protected int delayNano;
-    protected File file;
     protected long duration;
     protected boolean result;
     protected volatile boolean isWorking;
 
-    AbstractFileTask(File file){
-        this.file = file;
-        this.lines = loadLines(file);
-    }
-
-    AbstractFileTask(File file, int delayNano){
-        this.file = file;
+    AbstractFileTask(List<String> lines, int delayNano){
         this.delayNano = delayNano;
-        this.lines = loadLines(file);
-    }
-
-    private List<String> loadLines(File file){
-        try(var lines = new BufferedReader(new FileReader(file)).lines()) {
-            List<String> list = lines.collect(Collectors.toList());
-            Collections.shuffle(list);
-            return list;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
+        this.lines = lines;
     }
 
     /**

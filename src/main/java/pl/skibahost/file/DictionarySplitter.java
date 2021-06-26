@@ -4,13 +4,14 @@ import pl.skibahost.gui.Window;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class DictionarySplitter implements Runnable {
 
-    public static List<File> files;
+    public static List<List<String>> files;
 
     private int parts;
 
@@ -34,15 +35,16 @@ public class DictionarySplitter implements Runnable {
             for (int k = 0; k < parts; k++) {
                 File file = File.createTempFile("Part-", k + ".dic");
                 file.deleteOnExit();
-                try (var writer = new BufferedWriter(new FileWriter(file))) {
+//                try (var writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file.getPath()), StandardCharsets.UTF_8))) {
+//                try(var writer = Files.newBufferedWriter(file.toPath(), StandardCharsets.UTF_8)){
+                    List<String> linesPartList = new ArrayList<>();
                     for (int i = k * wordsInPart; i < (k + 1) * wordsInPart -1; i++) {
-                        int progres = (i*100)/linesList.size();
-                        Window.progressBar.setValue(progres);
-                        Window.progressBar.setString(i + "/" + linesList.size() + " (" + progres + "%)");
-                        writer.write(linesList.get(i) + '\n');
+                        updateProgressBar(linesList, i);
+                        linesPartList.add(linesList.get(i));
+//                        writer.write(linesList.get(i) + "\n");
                     }
-                    files.add(file);
-                }
+                    files.add(linesPartList);
+//                }
             }
             System.out.println("Parting done");
             Window.progressBar.setString(linesList.size() + "/" + linesList.size() + " (100%)");
@@ -50,5 +52,11 @@ public class DictionarySplitter implements Runnable {
         } catch (Exception e2) {
             e2.printStackTrace();
         }
+    }
+
+    private void updateProgressBar(List<String> linesList, int i) {
+        int progress = (i *100)/ linesList.size();
+        Window.progressBar.setValue(progress);
+        Window.progressBar.setString(i + "/" + linesList.size() + " (" + progress + "%)");
     }
 }

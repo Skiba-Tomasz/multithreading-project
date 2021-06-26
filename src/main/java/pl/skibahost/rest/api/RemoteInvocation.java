@@ -9,6 +9,7 @@ import pl.skibahost.file.DictionarySplitter;
 import pl.skibahost.job.MultiThreadSearch;
 import pl.skibahost.job.Omp4jJob;
 import pl.skibahost.job.SequentialSearch;
+import pl.skibahost.tasks.InvocationType;
 
 import javax.validation.constraints.NotNull;
 
@@ -20,7 +21,7 @@ public class RemoteInvocation {
     public ResponseEntity sequential(@RequestParam @NotNull String keyWord){
         if(keyWord.isBlank())
             return ResponseEntity.badRequest().body("Keyword can not be null!");
-        SequentialSearch sequentialSearch = new SequentialSearch(keyWord);
+        SequentialSearch sequentialSearch = new SequentialSearch(keyWord, InvocationType.REMOTE);
         sequentialSearch.execute();
         return ResponseEntity.ok("Method invoked");
     }
@@ -30,7 +31,7 @@ public class RemoteInvocation {
         if(keyWord.isBlank())
             return ResponseEntity.badRequest().body("Keyword can not be null!");
         new DictionarySplitter(threadCount).run();
-        MultiThreadSearch multiThreadSearch = new MultiThreadSearch(threadCount, keyWord);
+        MultiThreadSearch multiThreadSearch = new MultiThreadSearch(threadCount, keyWord, InvocationType.REMOTE);
         multiThreadSearch.execute();
         return ResponseEntity.ok("Method invoked");
     }
@@ -41,7 +42,7 @@ public class RemoteInvocation {
         if(keyWord.isBlank())
             return ResponseEntity.badRequest().body("Keyword can not be null!");
         new DictionarySplitter(threadCount).run();
-        Omp4jJob omp4jJob = new Omp4jJob(threadCount, keyWord);
+        Omp4jJob omp4jJob = new Omp4jJob(threadCount, keyWord, InvocationType.REMOTE);
         omp4jJob.execute();
         return ResponseEntity.ok("Method invoked");
     }
