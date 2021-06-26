@@ -3,7 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
     <groupId>pl.skibahost</groupId>
     <artifactId>SwingTable</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -14,6 +19,21 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jersey</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-swing</artifactId>
@@ -46,6 +66,11 @@
         <dependency>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
             <version>3.0.0</version>
         </dependency>
     </dependencies>
@@ -85,26 +110,30 @@
                             <goal>exec</goal>
                         </goals>
                     </execution>
-<!--                    <execution>-->
-<!--                        <id>my-execution2</id>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>java</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
+                    <!--                    <execution>-->
+                    <!--                        <id>my-execution2</id>-->
+                    <!--                        <phase>package</phase>-->
+                    <!--                        <goals>-->
+                    <!--                            <goal>java</goal>-->
+                    <!--                        </goals>-->
+                    <!--                    </execution>-->
                 </executions>
                 <configuration>
                     <executable>omp4j-compile.bat</executable>
-<!--                    <workingDirectory>${project.basedir}/target/classes</workingDirectory>-->
-<!--                    <mainClass>org.omp4j.Main</mainClass>-->
-<!--                    <arguments>-->
-<!--                        <argument>-jar</argument>-->
-<!--                        <argument>${project.basedir}/lib/omp4j-1.2.jar</argument>-->
-<!--                        <argument>-d</argument>-->
-<!--                        <argument>${project.basedir}/target/classes</argument>-->
-<!--                        <argument>${project.basedir}/src/main/java/pl/skibahost/OmpMain.java</argument>-->
-<!--                    </arguments>-->
+                    <!--                    <workingDirectory>${project.basedir}/target/classes</workingDirectory>-->
+                    <!--                    <mainClass>org.omp4j.Main</mainClass>-->
+                    <!--                    <arguments>-->
+                    <!--                        <argument>-jar</argument>-->
+                    <!--                        <argument>${project.basedir}/lib/omp4j-1.2.jar</argument>-->
+                    <!--                        <argument>-d</argument>-->
+                    <!--                        <argument>${project.basedir}/target/classes</argument>-->
+                    <!--                        <argument>${project.basedir}/src/main/java/pl/skibahost/OmpMain.java</argument>-->
+                    <!--                    </arguments>-->
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
