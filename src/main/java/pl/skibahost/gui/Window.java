@@ -1,7 +1,5 @@
 package pl.skibahost.gui;
 
-import pl.skibahost.OmpMain;
-
 import javax.swing.*;
 import java.awt.*;
 
