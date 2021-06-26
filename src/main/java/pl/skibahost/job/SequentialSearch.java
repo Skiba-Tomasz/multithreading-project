@@ -7,8 +7,6 @@ import pl.skibahost.tasks.SearchTask;
 
 public class SequentialSearch extends SearchJob{
 
-    private String keyword;
-
     public SequentialSearch(String keyWord) {
         super(keyWord);
     }
@@ -22,7 +20,6 @@ public class SequentialSearch extends SearchJob{
                     keyWord,
                     DictionarySplitter.files.get(0),
                     AppState.getInstance().delay).run();
-            Window.progressBar.setString("Done");
         }).start();
     }
 }

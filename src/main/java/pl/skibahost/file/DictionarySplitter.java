@@ -20,6 +20,10 @@ public class DictionarySplitter implements Runnable {
 
     @Override
     public void run() {
+        if(files != null && files.size() == parts){
+            System.out.println("Parting skipped. Already parted properly.");
+            return;
+        }
         InputStream resourceAsStream = DictionarySplitter.class.getClassLoader().getResourceAsStream("slownik.dic");
         if (resourceAsStream == null)
             throw new IllegalArgumentException("Dictionary file not found!");
