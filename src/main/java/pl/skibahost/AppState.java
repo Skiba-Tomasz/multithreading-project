@@ -1,7 +1,6 @@
 package pl.skibahost;
 
 import pl.skibahost.tasks.SearchResult;
-import pl.skibahost.tasks.SearchTaskType;
 
 import java.util.ArrayList;
 import java.util.Collections;

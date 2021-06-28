@@ -3,7 +3,6 @@ package pl.skibahost.tasks;
 import pl.skibahost.AppState;
 import pl.skibahost.gui.Window;
 
-import java.io.File;
 import java.util.List;
 
 public class SearchTask extends AbstractFileTask {

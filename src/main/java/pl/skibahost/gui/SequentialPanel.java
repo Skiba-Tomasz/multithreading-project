@@ -1,10 +1,7 @@
 package pl.skibahost.gui;
 
-import pl.skibahost.AppState;
-import pl.skibahost.file.DictionarySplitter;
 import pl.skibahost.job.SequentialSearch;
 import pl.skibahost.tasks.InvocationType;
-import pl.skibahost.tasks.SearchTask;
 
 import javax.swing.*;
 
