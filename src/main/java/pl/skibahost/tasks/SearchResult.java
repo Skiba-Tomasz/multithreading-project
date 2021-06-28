@@ -1,5 +1,7 @@
 package pl.skibahost.tasks;
 
+import pl.skibahost.AppState;
+
 public class SearchResult {
     public final String keyWord;
     public final Boolean isFound;
@@ -9,6 +11,7 @@ public class SearchResult {
     public final Long taskStartTimeMs;
     public final Long taskEndTimeMs;
     public final Integer threadHashCode;
+    public final Integer threadDelay;
 
 
     public SearchResult(String keyWord, Boolean isFound, SearchTaskType searchType, InvocationType invocationType, Long searchDuration, Long taskStartTimeMs, Long taskEndTimeMs, Integer threadHashCode) {
@@ -20,5 +23,6 @@ public class SearchResult {
         this.taskStartTimeMs = taskStartTimeMs;
         this.taskEndTimeMs = taskEndTimeMs;
         this.threadHashCode = threadHashCode;
+        this.threadDelay = AppState.getInstance().delay;
     }
 }

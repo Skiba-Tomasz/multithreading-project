@@ -15,7 +15,7 @@ public class Window extends JFrame {
 
     private JPanel mainPanel;
 
-    private IntroPanel introPanel;
+    private TopPanel topPanel;
     private JTabbedPane tabbedPane;
     private SequentialPanel sequentialPanel;
     private MultiThreadPanel multiThreadPanel;
@@ -24,7 +24,7 @@ public class Window extends JFrame {
     public Window(){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.mainPanel = new JPanel();
-        this.introPanel = new IntroPanel();
+        this.topPanel = new TopPanel();
         this.tabbedPane = new JTabbedPane();
         this.sequentialPanel = new SequentialPanel();
         this.multiThreadPanel = new MultiThreadPanel();
@@ -33,13 +33,15 @@ public class Window extends JFrame {
         this.setSize(WIDTH, HEIGHT);
         this.setTitle("Słownik równoległy - Tomasz Skiba");
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-        mainPanel.add(introPanel);
+        this.setLayout(new BorderLayout());
+//        mainPanel.add(introPanel);
         addTabs();
         mainPanel.add(tabbedPane);
         mainPanel.add(progressBar);
 
         this.setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        this.add(mainPanel);
+        this.add(topPanel, BorderLayout.PAGE_START);
+        this.add(mainPanel, BorderLayout.CENTER);
     }
 
     private void addTabs(){
