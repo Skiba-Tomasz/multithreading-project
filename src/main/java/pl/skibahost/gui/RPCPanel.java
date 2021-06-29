@@ -2,16 +2,17 @@ package pl.skibahost.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.net.URI;
 
 public class RPCPanel extends JPanel {
+    private JLabel info;
     private JButton swaggerButton;
 
     public RPCPanel() {
-        setLayout(new GridLayout(1, 1));
-
-        this.swaggerButton = new JButton("Uruchom Swagger UI w dymyślnej przeglądarce.");
+        setLayout(new GridLayout(2, 1));
+        this.info = new JLabel("Uruchom Swagger UI w dymyślnej przeglądarce.");
+        add(info);
+        this.swaggerButton = new JButton("Uruchom");
         this.swaggerButton.addActionListener(e -> {
             if (!openWebpage())
                 JOptionPane.showMessageDialog(this, "Proszę otworzyć w przeglądarce stronę\nhttp://localhost:8080/swagger-ui/index.html");
