@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pl.skibahost</groupId>
-    <artifactId>SwingTable</artifactId>
+    <artifactId>Multithreading</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <properties>
