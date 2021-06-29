@@ -5,6 +5,7 @@ import pl.skibahost.AppState;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class ResultWindow extends JFrame {
     public static final int WIDTH = 1000;
@@ -14,7 +15,7 @@ public class ResultWindow extends JFrame {
     private JLabel info;
     private Object[] columns = new String[]{"keyWord", "isFound", "searchType", "invocationType", "searchDuration", "taskStartTimeMs", "taskEndTimeMs", "threadHashCode", "delay"};
 
-    public ResultWindow() {
+    public ResultWindow(ActionEvent e) {
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);

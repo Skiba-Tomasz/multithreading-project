@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,10 +34,11 @@ public class DictionarySplitter implements Runnable {
         files = new ArrayList<>();
         try (var lines = new BufferedReader(new InputStreamReader(resourceAsStream, StandardCharsets.UTF_8)).lines()) {
             List<String> linesList = lines.collect(Collectors.toList());
+            Collections.shuffle(linesList);
             int wordsInPart = linesList.size() / parts;
             for (int k = 0; k < parts; k++) {
-                File file = File.createTempFile("Part-", k + ".dic");
-                file.deleteOnExit();
+//                File file = File.createTempFile("Part-", k + ".dic");
+//                file.deleteOnExit();
 //                try (var writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file.getPath()), StandardCharsets.UTF_8))) {
 //                try(var writer = Files.newBufferedWriter(file.toPath(), StandardCharsets.UTF_8)){
                     List<String> linesPartList = new ArrayList<>();

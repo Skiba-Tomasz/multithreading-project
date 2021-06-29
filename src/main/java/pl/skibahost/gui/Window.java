@@ -20,6 +20,7 @@ public class Window extends JFrame {
     private SequentialPanel sequentialPanel;
     private MultiThreadPanel multiThreadPanel;
     private Omp4jPanel omp4jPanel;
+    private RPCPanel rpcPanel;
 
     public Window(){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -29,6 +30,7 @@ public class Window extends JFrame {
         this.sequentialPanel = new SequentialPanel();
         this.multiThreadPanel = new MultiThreadPanel();
         this.omp4jPanel = new Omp4jPanel();
+        this.rpcPanel = new RPCPanel();
 
         this.setSize(WIDTH, HEIGHT);
         this.setTitle("Słownik równoległy - Tomasz Skiba");
@@ -48,6 +50,7 @@ public class Window extends JFrame {
         tabbedPane.add("Sekwencyjny", sequentialPanel);
         tabbedPane.add("Wątki", multiThreadPanel);
         tabbedPane.add("OpenMP4J", omp4jPanel);
+        tabbedPane.add("RPC", rpcPanel);
     }
 
 }
