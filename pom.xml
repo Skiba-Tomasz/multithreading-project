@@ -95,18 +95,6 @@
                 <executions>
                     <execution>
                         <id>main</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
-                            <classifier>main</classifier>
-                            <archive>
-                                <manifest>
-                                    <mainClass>pl.skibahost.Main</mainClass>
-                                </manifest>
-                            </archive>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>mpj</id>
