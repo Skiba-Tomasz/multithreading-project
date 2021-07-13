@@ -15,7 +15,7 @@ public class Omp4jPanel extends JPanel {
     public Omp4jPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.splitInfo = new JLabel("Ilość podziałów i wątków");
-        this.searchInfo = new JLabel("Wyszukaj słowo");
+        this.searchInfo = new JLabel("Wyszukaj słowo (Dla JVM openjdk, omp4j wykonuje sie sekwencyjnie!)");
 
         this.instancesPanel = new InstancesPanel();
         this.searchPanel = new SearchPanel(e -> startParallelSearch());
