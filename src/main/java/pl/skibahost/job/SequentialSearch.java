@@ -18,9 +18,10 @@ public class SequentialSearch extends SearchJob{
 
     @Override
     public void execute() {
+        new DictionarySplitter(1).run();
+        Window.progressBar.setString("Work in progress...");
+        // This is a single thread, processing data.
         new Thread(() -> {
-            new DictionarySplitter(1).run();
-            Window.progressBar.setString("Work in progress...");
             new SearchTask(
                     keyWord,
                     DictionarySplitter.files.get(0),

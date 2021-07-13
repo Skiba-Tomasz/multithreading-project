@@ -27,6 +27,8 @@ public class Omp4jJob extends SearchJob{
     public void execute() {
         List<Runnable> tasks = prepareTasks();
         Window.progressBar.setString("Work in progress...");
+        // Please notice, that there is no manual thread invocation/creation.
+        // This is delegated to OMP4J.
         OmpImpl.execute(tasks.toArray(new Runnable[tasks.size()]));
     }
 

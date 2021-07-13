@@ -26,6 +26,7 @@ public class MultiThreadSearch extends SearchJob{
     public void execute() {
         Set<SearchTask> tasks = prepareTasks();
         Window.progressBar.setString("Work in progress...");
+        // Please notice that all tasks are started in parallel.
         tasks.stream().forEach(task -> new Thread(task).start());
 
     }

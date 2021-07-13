@@ -25,4 +25,19 @@ public class SearchResult {
         this.threadHashCode = threadHashCode;
         this.threadDelay = AppState.getInstance().delay;
     }
+
+    @Override
+    public String toString() {
+        return "SearchResult{" +
+                "keyWord='" + keyWord + '\'' +
+                ", isFound=" + isFound +
+                ", searchType=" + searchType +
+                ", invocationType=" + invocationType +
+                ", searchDuration=" + searchDuration +
+                ", taskStartTimeMs=" + taskStartTimeMs +
+                ", taskEndTimeMs=" + taskEndTimeMs +
+                ", threadHashCode=" + threadHashCode +
+                ", threadDelay=" + threadDelay +
+                '}';
+    }
 }
