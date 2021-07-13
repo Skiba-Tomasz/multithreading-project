@@ -21,6 +21,8 @@ Compilation produces 2 jar files:
 - Multithreading-1.1-SNAPSHOT.jar
 - Multithreading-1.1-SNAPSHOT-mpj.jar
 
+Execute commands from `target` directory, created after project build.
+
 ##### Base version:
 Jar without `mpj` suffinx is an implementation of dictionary for:
 - Sequential execution
@@ -36,13 +38,14 @@ Run program by executing command from `target` directory:
 Jar containing `mpj` suffinx is an implementation of dictionary on MPJ.
 Run program by executing command.
 
-`np 3` - thread count - 3 threads will be executed
+`-np 3` - thread count - 3 threads will be executed
+
 `smok` - example word to search in dictionary
 
-For Windows OS:
+For Windows OS from `target` directory:
 
     mpjrun.bat -np 3 -jar .\Multithreading-1.1-SNAPSHOT-mpj.jar smok
     
-For Linux OS:
+For Linux OS from `target` directory:
 
     mpjrun.sh -np 3 -jar ./Multithreading-1.1-SNAPSHOT-mpj.jar smok
