@@ -132,7 +132,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <executable>omp4j-compile.bat</executable>
+                    <executable>omp4j-compile.${scriptExtension}</executable>
                 </configuration>
             </plugin>
             <plugin>
