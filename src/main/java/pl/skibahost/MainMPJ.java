@@ -20,8 +20,10 @@ public class MainMPJ {
         System.out.println("MPJ process args: " + Arrays.toString(args));
         new DictionarySplitterMPJ(Integer.parseInt(args[0]), Integer.parseInt(args[1])).run();
         MPI.Init(args);
-        if(args.length < 3)
+        if(args.length < 4) {
             System.out.println("Please provide a keyword that will be looked up in dictionary as 4th argument");
+            System.exit(1);
+        }
         new SearchTask(
                 args[3],
                 DictionarySplitterMPJ.files.get(0),
