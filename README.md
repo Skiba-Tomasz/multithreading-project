@@ -27,7 +27,7 @@ Execute commands from `target` directory, created after project build.
 Jar without `mpj` suffinx is an implementation of dictionary for:
 - Sequential execution
 - Multithread execution
-- OMP4j execution
+- OMP4j execution ****(For openjdk JVM's OMP4J works only sequentially)****
 - RMI (RPC) execution
 
 Run program by executing command from `target` directory:
