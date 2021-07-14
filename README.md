@@ -14,7 +14,7 @@ For Linux OS:
 
     chmod -x omp4j-compile.sh
 
-    mvn clean install -DskipTests -X -DscriptExtension=sh
+    mvn clean install -DskipTests -DscriptExtension=sh
 
 # Running application
 Compilation produces 2 jar files:
